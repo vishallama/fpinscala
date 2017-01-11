@@ -31,6 +31,8 @@ object List { // `List` companion object. Contains functions for creating and wo
     case _ => 101
   }
 
+  // x = 3
+
   def append[A](a1: List[A], a2: List[A]): List[A] =
     a1 match {
       case Nil => a2
