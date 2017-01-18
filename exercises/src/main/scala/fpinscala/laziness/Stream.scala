@@ -23,7 +23,11 @@ trait Stream[+A] {
     case Cons(h, t) => h() :: t().toList
   }
 
-  def take(n: Int): Stream[A] = sys.error("todo")
+  def take(n: Int): Stream[A] = this match {
+    case _ if (n <= 0) => this
+    case Empty => this
+    case Cons(h, t) => cons(h(), t().take(n-1))
+  }
 
   def drop(n: Int): Stream[A] = sys.error("todo")
 
