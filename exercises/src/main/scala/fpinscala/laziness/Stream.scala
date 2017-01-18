@@ -64,6 +64,9 @@ trait Stream[+A] {
         if (p(h)) cons(h, t)
         else t)
 
+  def append[B >: A](s: => Stream[B]): Stream[B] =
+    foldRight(s)((h, t) => cons(h, t))
+
   def startsWith[B](s: Stream[B]): Boolean = sys.error("todo")
 }
 case object Empty extends Stream[Nothing]
