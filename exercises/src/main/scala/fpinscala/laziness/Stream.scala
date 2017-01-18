@@ -43,7 +43,8 @@ trait Stream[+A] {
       else t().takeWhile(p)
   }
 
-  def forAll(p: A => Boolean): Boolean = sys.error("todo")
+  def forAll(p: A => Boolean): Boolean =
+    !exists(h => !p(h))
 
   def headOption: Option[A] = sys.error("todo")
 
