@@ -43,6 +43,11 @@ trait Stream[+A] {
       else t().takeWhile(p)
   }
 
+  def takeWhile_1(p: A => Boolean): Stream[A] =
+    foldRight(empty[A])((h, t) =>
+        if (p(h)) cons(h, t)
+        else empty)
+
   def forAll(p: A => Boolean): Boolean =
     !exists(h => !p(h))
 
