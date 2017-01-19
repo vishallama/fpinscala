@@ -108,5 +108,8 @@ object Stream {
 
   def fibsViaUnfold: Stream[Int] =
     unfold((0, 1)) { case (a, b) => Some((a, (b, a+b))) }
+
+  def fromViaUnfold(n: Int): Stream[Int] =
+    unfold(n) { case m => Some(m, m+1) }
 }
 
