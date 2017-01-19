@@ -55,6 +55,14 @@ trait Stream[+A] {
         if (p(h)) cons(h, t)
         else empty)
 
+  def takeWhileViaUnfold(p: A => Boolean): Stream[A] =
+    unfold(this) {
+      case Empty => None
+      case Cons(h, t) =>
+        if (p(h())) Some((h(), t()))
+        else None
+    }
+
   def forAll(p: A => Boolean): Boolean =
     !exists(h => !p(h))
 
