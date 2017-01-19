@@ -111,5 +111,8 @@ object Stream {
 
   def fromViaUnfold(n: Int): Stream[Int] =
     unfold(n) { case m => Some(m, m+1) }
+
+  def constantViaUnfold[A](a: A): Stream[A] =
+    unfold(a) { case _ => Some(a, a) }
 }
 
