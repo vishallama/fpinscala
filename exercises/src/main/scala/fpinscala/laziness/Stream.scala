@@ -114,5 +114,7 @@ object Stream {
 
   def constantViaUnfold[A](a: A): Stream[A] =
     unfold(a) { case _ => Some(a, a) }
+
+  def onesViaUnfold: Stream[Int] = constantViaUnfold(1)
 }
 
