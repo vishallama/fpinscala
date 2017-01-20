@@ -40,7 +40,11 @@ object RNG {
     (i / (Int.MaxValue.toDouble + 1), r)
   }
 
-  def intDouble(rng: RNG): ((Int,Double), RNG) = ???
+  def intDouble(rng: RNG): ((Int,Double), RNG) = {
+    val (i, r) = rng.nextInt
+    val (d, s) = double(r)
+    ((i, d), s)
+  }
 
   def doubleInt(rng: RNG): ((Double,Int), RNG) = ???
 
