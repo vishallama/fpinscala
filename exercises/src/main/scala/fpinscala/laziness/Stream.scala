@@ -70,6 +70,8 @@ trait Stream[+A] {
       case _ => None
     }
 
+  def zipAll[B](s: Stream[B]): Stream[(Option[A], Option[B])] = ???
+
   def forAll(p: A => Boolean): Boolean =
     !exists(h => !p(h))
 
