@@ -72,6 +72,9 @@ object RNG {
     loop(count, rng, Nil)
   }
 
+  def intsViaSequence(count: Int): Rand[List[Int]] =
+    sequence(List.fill(count)(int))
+
   def map2[A,B,C](ra: Rand[A], rb: Rand[B])(f: (A, B) => C): Rand[C] =
     rng => {
       val (a, r1) = ra(rng)
